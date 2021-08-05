@@ -1,0 +1,58 @@
+{
+    "cloth": [
+        {
+            "categorize": "shirt",
+            "color": "blue",
+            "gender": "male",
+            "image": "./img/blue_t.png"
+        },
+        {
+            "categorize": "shirt",
+            "color": "yellow",
+            "gender": "male",
+            "image": "./img/yellow_t.png"
+        },
+        {
+            "categorize": "shirt",
+            "color": "red",
+            "gender": "male",
+            "image": "./img/pink_t.png"
+        },
+        {
+            "categorize": "hat",
+            "color": "blue",
+            "gender": "male",
+            "image": "./img/blue_p.png"
+        },
+        {
+            "categorize": "hat",
+            "color": "red",
+            "gender": "female",
+            "image": "./img/pink_p.png"
+        },
+        {
+            "categorize": "hat",
+            "color": "yellow",
+            "gender": "female",
+            "image": "./img/yellow_p.png"
+        },
+        {
+            "categorize": "socks",
+            "color": "blue",
+            "gender": "male",
+            "image": "./img/blue_s.png"
+        },
+        {
+            "categorize": "socks",
+            "color": "yellow",
+            "gender": "female",
+            "image": "./img/yellow_s.png"
+        },
+        {
+            "categorize": "socks",
+            "color": "red",
+            "gender": "male",
+            "image": "./img/pink_s.png"
+        }
+    ]
+}
