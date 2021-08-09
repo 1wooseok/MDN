@@ -2,7 +2,8 @@ const item_list = document.querySelector('.item_list');
 const btns = Array(document.querySelectorAll('.btn')); // Object -> Array 
 
 function setItems(item) { // Stringify
-    return `
+    return
+    `
     <li>
         <img src='${item.image}'/>
         <span>${item.categorize + ' ' + item.gender}</span>

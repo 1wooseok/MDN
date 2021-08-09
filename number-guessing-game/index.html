@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Number Guessing Game</h1>
+    </header>
+    <section>
+        <div class="message-box">
+
+        </div>
+        Enter the Guess :
+        <input type="text" class="input-box" placeholder="1 to 100">
+        <input type="button" value="Submit" class="submit-btn btn">
+    </section>
+    <section class="board">
+        trial : <span class="trial"></span>
+        <br>
+        Answer List : <span class="answer-list"></span>
+    </section>
+
+    <div class="modal_bg hidden">
+        <section>
+            <div class="modal-window">
+                <h2>continue?</h2>
+                <div class="btn_container">
+                    <input type="button" class="btn restart_btn" value="Yes">
+                    <input type="button" class="btn gameover_btn" value="No">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
