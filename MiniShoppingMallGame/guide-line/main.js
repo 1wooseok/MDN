@@ -15,7 +15,7 @@ function createHTMLElement(clothes) {
         <img src="${clothes.image}" alt="${clothes.categorize}">
         <span>${clothes.categorize + ' ' + clothes.gender
         }</span >
-    </li >
+    </li>
     `
 }
 
