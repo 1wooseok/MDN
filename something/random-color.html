@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Random color example — event handler property</title>
+    <style>
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Change color</button>
+    <input type="button" value="disable">
+
+
+    <script>
+        const btn = document.querySelector('button');
+        const disable = document.querySelector('input');
+
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        console.log(signal);
+        function random(number) {
+            return Math.floor(Math.random() * number);
+        }
+
+        function bgChange(e) {
+            const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            e.target.style.backgroundColor = rndCol;
+            console.log(e);
+        }
+
+        btn.addEventListener('click', bgChange, { signal });
+        disable.addEventListener('click', function () {
+            controller.abort();
+            console.log('Color Change is Aborted');
+        })
+
+
+
+        btn.addEventListener('click', bgChange);
+    </script>
+
+
+</body>
+
+</html>

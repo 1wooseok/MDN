@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Loops: Task 1</title>
+
+</head>
+
+<body>
+
+    <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+    <section class="preview">
+
+
+
+    </section>
+
+    <script>
+        let myArray = ['tomatoes', 'chick peas', 'onions', 'rice', 'black beans'];
+        let list = document.createElement('ul');
+
+        // Add your code here
+        for (let i = 0; i < myArray.length; i++) {
+            const li = document.createElement('li');
+            li.innerText = myArray[i];
+            list.appendChild(li);
+        }
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+        section.appendChild(list);
+    </script>
+</body>
+
+
+</html>

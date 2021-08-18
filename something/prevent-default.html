@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="fname">First name : </label>
+            <input id="fname" type="text">
+        </div>
+        <div>
+            <label for="lname">Last name : </label>
+            <input id="lname" type="text">
+        </div>
+        <div>
+            <input id="submit" type="submit">
+        </div>
+    </form>
+    <p></p>
+    <script>
+        const form = document.querySelector('form');
+        const fname = document.querySelector('#fname');
+        const lname = document.querySelector('#lname');
+
+        function nullChk(e) {
+            if (fname.value === '' || lname.value === '') {
+                e.preventDefault();
+                alert('Please Check your name');
+            } else {
+                e.preventDefault();
+                console.log('First Name : ' + fname.value);
+                console.log('Last Name : ' + lname.value);
+            }
+        }
+
+        form.addEventListener('submit', nullChk);
+
+    </script>
+</body>
+
+</html>

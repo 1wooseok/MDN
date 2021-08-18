@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+
+<HEAD>
+    <TITLE>Mozilla CSS Getting Started - JavaScript demonstration</TITLE>
+</HEAD>
+
+<BODY>
+    <style>
+        /*** JavaScript demonstration ***/
+        #square {
+            width: 20em;
+            height: 20em;
+            border: 2px inset gray;
+            margin-bottom: 1em;
+        }
+
+        button {
+            padding: .5em 2em;
+        }
+    </style>
+    <H1>JavaScript sample</H1>
+
+    <DIV id="square"></DIV>
+
+    <BUTTON type="button" onclick="doDemo(this);">Click Me</BUTTON>
+
+
+    <script>
+        // JavaScript demonstration
+        function doDemo(button) {
+            var square = document.getElementById("square")
+            square.style.backgroundColor = "#fa4"
+            square.style.position = 'relative';
+            square.style.left = '20em';
+            square.style.transition = 'all 1.5s';
+            button.setAttribute("disabled", "true")
+            setTimeout(clearDemo, 2000, button)
+        }
+
+        function clearDemo(button) {
+            var square = document.getElementById("square")
+            square.style.backgroundColor = "transparent"
+            square.style.left = '0';
+            button.removeAttribute("disabled")
+        }
+    </script>
+
+</BODY>
+
+</HTML>

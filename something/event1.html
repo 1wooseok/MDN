@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Events: Task 1</title>
+    <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            margin: 20px 0 20px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="preview">
+    </section>
+
+    <button class="off">Machine is off</button>
+
+    <script>
+        let btn = document.querySelector('.off');
+
+        // Add your code here
+
+
+
+        function chText(e) {
+            console.log(e.target.value);
+            if (e.target.value == 'Machine is off') {
+                e.target.value = 'On !!';
+                e.target.innerHTML = 'On !!';
+            } else {
+                e.target.value = 'Machine is off';
+                e.target.innerHTML = 'Machine is off';
+            }
+        }
+
+        btn.addEventListener('click', function (e) {
+            chText(e);
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            border: 1px solid black;
+        }
+
+        li {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="child"></li>
+        <li class="child"></li>
+        <li class="child"></li>
+    </ul>
+
+    <br>
+
+    <ul style="">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul');
+
+        function delegation(e) {
+            e.target.innerHTML = 'Good';
+        }
+
+        ul.addEventListener('click', function (e) {
+            if (e.target && e.target.matches('li.child')) {
+                console.log(e.target, e.target.className);
+                delegation(e);
+            } else {
+                console.log('x');
+            }
+        })
+    </script>
+</body>
+
+</html>
