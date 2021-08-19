@@ -1,8 +1,9 @@
 # MDN tutorials
 
 ### Vanilla JS
- - DOM
  - event
+ - event delegation
+ - DOM
  - OOP 
  - JSON
  - canvas & 2d ctx
