@@ -2,8 +2,8 @@
 
 ### Vanilla JS
  - event
- - event delegation
  - Bubbling & Capture
+ - event delegation
  - DOM
  - OOP 
  - JSON
