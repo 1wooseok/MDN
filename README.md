@@ -5,6 +5,6 @@
  - Bubbling & Capture
  - event delegation
  - DOM
- - OOP 
+ - OOP (+ Prototype) 
  - JSON
  - canvas & 2d ctx
