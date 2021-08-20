@@ -1,83 +1,154 @@
-// setup canvas
-
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
-// function to generate random number
-
 function random(min, max) {
-    const num = Math.floor(Math.random() * (max - min + 1)) + min;
-    return num;
+    let n = Math.floor(Math.random() * (max - min + 1)) + min;
+    return n;
 }
 
-function Ball(x, y, velX, velY, color, size) {
-    this.x = x;
-    this.y = y;
-    this.velX = velX;
-    this.velY = velY;
-    this.color = color;
-    this.size = size;
+random(0, 255);
+
+
+class Ball {
+    constructor(x, y, vx, vy, color, size) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx; // 공은 위치에 속도 벡터를 추가하여 움직일 수 있게 된다.
+        this.vy = vy;
+        this.color = color;
+        this.size = size;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    update() {
+        if (this.x - this.size <= 0) {
+            this.vx = -this.vx;
+        }
+        if (this.x + this.size >= width) {
+            this.vx = -this.vx;
+        }
+        if (this.y - this.size <= 0) {
+            this.vy = -this.vy;
+        }
+        if (this.y + this.size >= height) {
+            this.vy = -this.vy;
+        }
+
+        this.x += this.vx;
+        this.y += this.vy;
+
+    }
+
+    collitionDetect() {
+        for (let i = 0; i < balls.length; i++) {
+            if (!(this === balls[i])) {
+                const dx = this.x - balls[i].x;
+                const dy = this.y - balls[i].y;
+                const d = Math.sqrt((dx * dx) + (dy * dy));
+
+                if (d < (this.size + balls[i].size)) {
+                    balls[i].color = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`;
+                }
+            }
+        }
+    }
 }
 
-Ball.prototype.draw = function () {
-    ctx.beginPath();
-    ctx.fillStyle = this.color;
-    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-    ctx.fill();
-}
-
-Ball.prototype.update = function () {
-    if ((this.x + this.size) >= width) {
-        this.velX = -(this.velX);
+class EvilBall extends Ball {
+    constructor(x, y, vx, vy, color, size) {
+        super(x, y, vx, vy, color, size);
     }
 
-    if ((this.x - this.size) <= 0) {
-        this.velX = -(this.velX);
+    drawEvil() {
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.stroke();
     }
 
-    if ((this.y + this.size) >= height) {
-        this.velY = -(this.velY);
+    updateEvil(evt) {
+        const px = 10;
+
+        if (evt.key === 'w') {
+            this.y -= px;
+        }
+        if (evt.key === 's') {
+            this.y += px;
+        }
+        if (evt.key === 'a') {
+            this.x -= px;
+        }
+        if (evt.key === 'd') {
+            this.x += px;
+        }
     }
 
-    if ((this.y - this.size) <= 0) {
-        this.velY = -(this.velY);
-    }
+    evilCollisionDetect() {
+        for (let i = 0; i < balls.length; i++) {
+            if (!(this === balls[i])) {
+                const dx = this.x - balls[i].x;
+                const dy = this.y - balls[i].y;
+                const d = Math.sqrt((dx * dx) + (dy * dy));
 
-    this.x += this.velX;
-    this.y += this.velY;
+                if (d < this.size + balls[i].size) {
+                    balls.push(balls[i]);
+                }
+            }
+        }
+    }
 }
 
 let balls = [];
+// Create EvilBall instance
+let eBall = new EvilBall(width / 2, height / 2, 5, 5, 'white', 10);
 
+// Create Ball instance 
 while (balls.length < 25) {
     let size = random(10, 20);
-    let ball = new Ball(
-        // ball position always drawn at least one ball width
-        // away from the edge of the canvas, to avoid drawing errors
+    let myBall = new Ball(
         random(0 + size, width - size),
         random(0 + size, height - size),
         random(-7, 7),
         random(-7, 7),
-        'rgb(' + random(0, 255) + ',' + random(0, 255) + ',' + random(0, 255) + ')',
+        `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`,
         size
     );
 
-    balls.push(ball);
+    balls.push(myBall);
 }
 
 function loop() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+    ctx.fillStyle = 'rgba(0,0,0, 0.25)';
     ctx.fillRect(0, 0, width, height);
 
     for (let i = 0; i < balls.length; i++) {
         balls[i].draw();
         balls[i].update();
+        balls[i].collitionDetect();
     }
+    // reDraw EvalBall
+    eBall.drawEvil();
 
-    requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);
 }
 
+eBall.drawEvil();
+
+window.addEventListener('keypress', function (evt) {
+    eBall.updateEvil(evt);
+})
+
 loop();
+
+
+
+
