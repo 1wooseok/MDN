@@ -7,7 +7,7 @@
  - DOM
  - OOP (+ Prototype) 
    <br>
-   -> <a href="https://1wooseok.github.io/MDN/oop/bouncing-balls/index.html">Bouncing-Ball-Game</a>
+   -> <a href="https://1wooseok.github.io/MDN/oop/bouncing-balls/index.html">Play Bouncing-Ball-Game</a>
  - JSON
  - canvas & 2d ctx
 
