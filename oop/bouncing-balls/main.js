@@ -1,6 +1,18 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
+const h2 = document.querySelector('h2');
+const modal_bg = document.querySelector('.modal_bg');
+const modal_window = document.querySelector('.modal_window');
+const yes = document.querySelector('.yes');
+const no = document.querySelector('.no');
+
+// Initial Counting Display
+const countingText = 'Ball Counting : ';
+let cnt = 25;
+h2.textContent = countingText + cnt;
+
+// Window w, h
 const width = canvas.width = window.innerWidth;
 const height = canvas.height = window.innerHeight;
 
@@ -11,13 +23,20 @@ function random(min, max) {
 
 random(0, 255);
 
-
-class Ball {
-    constructor(x, y, vx, vy, color, size) {
+// Define Class
+class Shape {
+    constructor(x, y, vx, vy, exists) {
         this.x = x;
         this.y = y;
         this.vx = vx; // 공은 위치에 속도 벡터를 추가하여 움직일 수 있게 된다.
         this.vy = vy;
+        this.exists = exists; // 기본값 true
+    }
+}
+
+class Ball extends Shape {
+    constructor(x, y, vx, vy, exists, color, size) {
+        super(x, y, vx, vy, exists);
         this.color = color;
         this.size = size;
     }
@@ -45,12 +64,11 @@ class Ball {
 
         this.x += this.vx;
         this.y += this.vy;
-
     }
 
     collitionDetect() {
         for (let i = 0; i < balls.length; i++) {
-            if (!(this === balls[i])) {
+            if (!(this === balls[i]) && balls[i].exsits) {
                 const dx = this.x - balls[i].x;
                 const dy = this.y - balls[i].y;
                 const d = Math.sqrt((dx * dx) + (dy * dy));
@@ -63,14 +81,19 @@ class Ball {
     }
 }
 
-class EvilBall extends Ball {
-    constructor(x, y, vx, vy, color, size) {
-        super(x, y, vx, vy, color, size);
+
+
+class EvilBall extends Shape {
+    constructor(x, y, vx, vy, exists, color, size) {
+        super(x, y, vx, vy, exists, color, size);
+        this.color = color;
+        this.size = size;
     }
 
     drawEvil() {
         ctx.strokeStyle = 'white';
         ctx.beginPath();
+        ctx.lineWidth = '1.5';
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
         ctx.stroke();
     }
@@ -94,35 +117,43 @@ class EvilBall extends Ball {
 
     evilCollisionDetect() {
         for (let i = 0; i < balls.length; i++) {
-            if (!(this === balls[i])) {
+            if (balls[i].exists) {
                 const dx = this.x - balls[i].x;
                 const dy = this.y - balls[i].y;
                 const d = Math.sqrt((dx * dx) + (dy * dy));
 
-                if (d < this.size + balls[i].size) {
-                    balls.push(balls[i]);
+                const tsize = this.size + balls[i].size;
+                if (d < (this.size + balls[i].size)) {
+                    balls[i].exists = false;
+                    cnt--;
+                    h2.textContent = countingText + cnt;
                 }
             }
+        }
+
+        if (cnt === 0) {
+            gameOver();
         }
     }
 }
 
 let balls = [];
+
 // Create EvilBall instance
-let eBall = new EvilBall(width / 2, height / 2, 5, 5, 'white', 10);
+let eBall = new EvilBall(width / 2, height / 2, 15, 15, true, 'white', 10);
 
 // Create Ball instance 
-while (balls.length < 25) {
+while (balls.length < cnt) {
     let size = random(10, 20);
     let myBall = new Ball(
         random(0 + size, width - size),
         random(0 + size, height - size),
         random(-7, 7),
         random(-7, 7),
+        true,
         `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`,
         size
     );
-
     balls.push(myBall);
 }
 
@@ -131,14 +162,45 @@ function loop() {
     ctx.fillRect(0, 0, width, height);
 
     for (let i = 0; i < balls.length; i++) {
-        balls[i].draw();
-        balls[i].update();
-        balls[i].collitionDetect();
+        if (balls[i].exists) {
+            balls[i].draw();
+            balls[i].update();
+            balls[i].collitionDetect();
+        }
     }
-    // reDraw EvalBall
+    // redraw EvalBall
     eBall.drawEvil();
+    eBall.evilCollisionDetect();
 
     window.requestAnimationFrame(loop);
+}
+
+function gameOver() {
+    // Open Modla Window
+    modal_bg.classList.remove('hidden');
+    modal_window.classList.remove('hidden');
+
+    // Stop Animation Loop
+    let myReq = requestAnimationFrame(loop);
+    window.cancelAnimationFrame(myReq);
+
+    yes.addEventListener('click', reStart);
+    no.addEventListener('click', Exit);
+}
+
+function reStart() {
+    modal_bg.classList.add('hidden');
+    modal_window.classList.add('hidden');
+
+    cnt = balls.length;
+    for (let i = 0; i < balls.length; i++) {
+        balls[i].exists = true;
+    }
+}
+
+function Exit() {
+    modal_bg.classList.add('hidden');
+    modal_window.classList.add('hidden');
 }
 
 eBall.drawEvil();

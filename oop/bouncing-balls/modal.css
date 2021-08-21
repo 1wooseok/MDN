@@ -1,0 +1,51 @@
+.hidden {
+    display: none;
+}
+
+.modal_bg {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal_window {
+    z-index: 3;
+    position: absolute;
+    opacity: 0.7;
+    background-color: dimgrey;
+    
+
+    top: 150px;
+    left: calc((100vw / 2) - 250px);
+    
+    width: 500px;
+    height: 250px;
+
+    border-radius: 20px;   
+
+}
+
+.modal_window p {
+    z-index: 4;
+    text-align: center;
+    color: white;
+    font-size: 35px;
+    line-height: 100px;
+
+
+}
+
+.modal_window .modal_btn {
+    z-index: 4;
+    position: absolute;    
+    bottom: 30px;
+    left: 210px;
+}
+
+.modal_window .modal_btn #btn {
+    color: white;
+}
+

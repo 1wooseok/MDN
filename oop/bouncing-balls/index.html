@@ -5,10 +5,22 @@
     <meta charset="utf-8">
     <title>Bouncing balls</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
 </head>
 
 <body>
+    <div class="modal_bg hidden">
+        <div class="modal_window hidden">
+            <p>Continue?</p>
+            <div class="modal_btn">
+                <input type="button" value="Yes" class="yes">
+                <input type="button" value="No" class="no">
+            </div>
+        </div>
+    </div>
+
     <h1>bouncing balls</h1>
+    <h2>Ball Counting : 0</h2>
     <canvas></canvas>
 
     <script src="./main.js"></script>

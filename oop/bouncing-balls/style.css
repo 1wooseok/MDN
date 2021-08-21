@@ -16,11 +16,22 @@ html, body {
     font-size: 2rem;
     letter-spacing: -1px;
     position: absolute;
-    margin: 0;
+    margin-top: 10px;
     top: -4px;
     right: 5px;
 
     
     color: transparent;
     text-shadow: 0 0 4px white;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1rem;
+    position: absolute;
+    right: 78px;
+    top: 50px;
+
+    color: transparent;
+    text-shadow: 0 0 2px white;
   }
