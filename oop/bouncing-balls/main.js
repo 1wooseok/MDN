@@ -1,3 +1,4 @@
+alert(' W A S D 키로 조작하여 공들을 먹어 치우세요! ')
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -9,7 +10,7 @@ const no = document.querySelector('.no');
 
 // Initial Counting Display
 const countingText = 'Ball Counting : ';
-let cnt = 25;
+let cnt = 3;
 h2.textContent = countingText + cnt;
 
 // Window w, h
@@ -98,20 +99,22 @@ class EvilBall extends Shape {
         ctx.stroke();
     }
 
-    updateEvil(evt) {
-        const px = 10;
+    updateEvil() {
+        let _this = this;
 
-        if (evt.key === 'w') {
-            this.y -= px;
-        }
-        if (evt.key === 's') {
-            this.y += px;
-        }
-        if (evt.key === 'a') {
-            this.x -= px;
-        }
-        if (evt.key === 'd') {
-            this.x += px;
+        window.onkeydown = function (evt) {
+            if (evt.key === 'w') {
+                _this.y -= _this.vy;
+            }
+            if (evt.key === 's') {
+                _this.y += _this.vy;
+            }
+            if (evt.key === 'a') {
+                _this.x -= _this.vx;
+            }
+            if (evt.key === 'd') {
+                _this.x += _this.vx;
+            }
         }
     }
 
@@ -170,6 +173,7 @@ function loop() {
     }
     // redraw EvalBall
     eBall.drawEvil();
+    eBall.updateEvil();
     eBall.evilCollisionDetect();
 
     window.requestAnimationFrame(loop);
@@ -185,7 +189,7 @@ function gameOver() {
     window.cancelAnimationFrame(myReq);
 
     yes.addEventListener('click', reStart);
-    no.addEventListener('click', Exit);
+    no.addEventListener('click', exit);
 }
 
 function reStart() {
@@ -198,16 +202,10 @@ function reStart() {
     }
 }
 
-function Exit() {
-    modal_bg.classList.add('hidden');
-    modal_window.classList.add('hidden');
+function exit() {
+    modal_bg.classList.add('hidden2');
+    modal_window.classList.add('hidden2');
 }
-
-eBall.drawEvil();
-
-window.addEventListener('keypress', function (evt) {
-    eBall.updateEvil(evt);
-})
 
 loop();
 
