@@ -11,7 +11,7 @@
 
 - ex) <script>로 서버에서 사용 가능한 JS library에 연결<br>
 
-<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+<script src="..."></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 
 
