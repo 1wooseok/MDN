@@ -20,10 +20,10 @@ ex)
 
 - Third Party API는 브라우저와 다른 권한 시스템 사용
 - Developer Key를 사용하여 API기능에 접근
-
-
-
-
+  
+<br>
+<br>
+<br>
 
 ## RESTful API
 
