@@ -10,7 +10,7 @@ const no = document.querySelector('.no');
 
 // Initial Counting Display
 const countingText = 'Ball Counting : ';
-let cnt = 3;
+let cnt = 25;
 h2.textContent = countingText + cnt;
 
 // Window w, h
