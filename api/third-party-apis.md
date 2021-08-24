@@ -23,7 +23,6 @@ ex)
   
 <br>
 <br>
-<br>
 
 ## RESTful API
 
