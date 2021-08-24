@@ -1,11 +1,11 @@
 ## Third party APIs
 
-### third party API란?
+#### third party API란?
 
 - 타사 서버에 있는 API
 
 
-### JS 에서 접근
+#### JS 에서 접근
 
 - API 기능에 연결하고 페이지에서 사용할 수 있도록 해야함.
 
@@ -15,7 +15,7 @@
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
 
 
-### API key
+#### API key
 
 - Third Party API는 브라우저와 다른 권한 시스템 사용
 - Developer Key를 사용하여 API기능에 접근
@@ -27,11 +27,11 @@
 - 특정 URL에 HTTP request를 보내 Data에 접근 ( 일반적인 패턴 )
 
 
-### API를 앱에 연결
+#### API를 앱에 연결
 
 - ex) URL에 API key를 GET parameter로 포함.
 
 
-### Data 요청
+#### Data 요청
 
 - ex) Fetch API
