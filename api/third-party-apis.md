@@ -9,8 +9,7 @@
 
 - API 기능에 연결하고 페이지에서 사용할 수 있도록 해야함.
 
-ex) 
-<script>로 서버에서 사용 가능한 JS library에 연결<br>
+ex) <script>로 서버에서 사용 가능한 JS library에 연결<br>
 
 <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
