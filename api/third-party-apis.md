@@ -22,7 +22,7 @@
   
 <br>
 
-## RESTful API
+## RESTful API로 접근
 
 - 특정 URL에 HTTP request를 보내 Data에 접근 ( 일반적인 패턴 )
 
