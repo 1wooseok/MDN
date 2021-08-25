@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>NY Times article search</h1>
+    <h1>NY Times articles search</h1>
 
     <div class="wrapper">
 
@@ -46,10 +46,9 @@
     </div>
 
     <script>
-
         // Defining a baseURL and key to as part of the request URL
 
-        const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
+        const baseURL = 'https://api.nytimes.com/svc/search/v2/articlessearch.json';
         const key = 'mE9IWXSVLOFE0C0GQzMYtcBPP9Jx5mQb';
         let url;
 
@@ -91,7 +90,7 @@
         function fetchResult(evt) {
             evt.preventDefault();
             // Assemble the full URL
-            url = baseURL + '?api-key=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value + '&fq=document_type:("article")';
+            url = baseURL + '?api-key=' + key + '&page=' + pageNumber + '&q=' + searchTerm.value + '&fq=document_type:("articles")';
 
             if (startDate.value !== '') {
                 url += '&begin_date=' + startDate.value;
@@ -108,11 +107,7 @@
             })
         }
 
-        function displayResults(json) {
-            while (section.firstChild) {
-                section.removeChild(section.firstChild);
-            }
-
+        function displayResult(json) {
             const articles = json.response.docs;
 
             if (articles.length === 10) {
@@ -123,10 +118,10 @@
 
             if (articles.length === 0) {
                 const para = document.createElement('p');
-                para.textContent = 'No results returned.'
+                para.textContent = "No Result..";
                 section.appendChild(para);
             } else {
-                for (var i = 0; i < articles.length; i++) {
+                for (let i = 0; i < articles.length; i++) {
                     const article = document.createElement('article');
                     const heading = document.createElement('h2');
                     const link = document.createElement('a');
@@ -136,6 +131,7 @@
                     const clearfix = document.createElement('div');
 
                     let current = articles[i];
+
                     console.log(current);
 
                     link.href = current.web_url;
