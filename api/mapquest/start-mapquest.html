@@ -13,34 +13,50 @@
     </style>
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+    <button>I'm Here!</button>
     <script>
         // 1. The basic part of the example
+        const btn = document.querySelector('button');
+
         var L;
 
         window.onload = function () {
             L.mapquest.key = 'RHlQlEyIG5rQKGXjwc4Jh1nCqKnmPppQ';
 
-            // 'map' refers to a <div> element with the ID map
-            var map = L.mapquest.map('map', {
-                center: [53.480759, -2.242631],
-                layers: L.mapquest.tileLayer('hybrid'),
-                zoom: 12
-            });
+            btn.onclick = function () {
+                if ('geolocation' in navigator) {
+                    console.log('o');
+                } else {
+                    console.log('x');
+                }
 
-            L.marker([53.480759, -2.242631], {
-                icon: L.mapquest.icons.marker({
-                    primaryColor: '#22407F',
-                    secondaryColor: '#3B5998',
-                    shadow: true,
-                    size: 'md',
-                    symbol: 'A'
-                })
-            })
-                .bindPopup('This is Manchester!')
-                .addTo(map);
+                navigator.geolocation.getCurrentPosition((position) => {
+                    let lat = position.coords.latitude;
+                    let lng = position.coords.longitude;
+
+                    //'map' refers to a <div> element with the ID map
+                    var map = L.mapquest.map('map', {
+                        center: [lat, lng],
+                        layers: L.mapquest.tileLayer('hybrid'),
+                        zoom: 12
+                    });
+
+                    L.marker([lat, lng], {
+                        icon: L.mapquest.icons.marker({
+                            primaryColor: '#22407F',
+                            secondaryColor: '#3B5998',
+                            shadow: true,
+                            size: 'md',
+                            symbol: 'A'
+                        })
+                    })
+                        .bindPopup("I'm Here!")
+                        .addTo(map);
+                }, () => { console.log('Something Wrong..') })
+
+                btn.disabled = true;
+            }
         }
-
-
     </script>
 </head>
 
