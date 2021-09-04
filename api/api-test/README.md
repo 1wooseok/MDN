@@ -8,7 +8,8 @@
 
 난관 ( CORS )
 
-![스크린샷 2021-09-04 오후 8.43.10](/Users/1wooseok/Desktop/스크린샷 2021-09-04 오후 8.43.10.png)
+<img width="533" alt="스크린샷 2021-09-04 오후 8 43 10" src="https://user-images.githubusercontent.com/74036731/132093807-aeeee776-816a-43b5-a09c-217e4682ec81.png">
+
 
 CORS(Cross Origin Resource Sharing) : 시스템 수준에서 타 도메인 간 자원 호출을 승인하거나 차단하는 것을 결정하는 표준규약. 
 
