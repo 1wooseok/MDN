@@ -21,8 +21,10 @@
 <br>
 <br>
 <br>
+<h3>결과</h3>
+<img width="539" alt="스크린샷 2021-09-04 오후 9 17 35" src="https://user-images.githubusercontent.com/74036731/132094162-473244f8-b530-412b-85fd-7c9b5d5ccf60.png">
 <br>
 <br>
 <br>
-
+<br>
 출처 : https://developer.mozilla.org/ko/docs/Web/HTTP/CORS
