@@ -46,7 +46,7 @@ function displayCity(searched_city) {
   
   let item = myXML.getElementsByTagName('item');
 
-  // nextNode 이런걸로 가격 뽑기
+  // 도시이름 검색
   for(let i=0; i<item.length; i++) {
     let city = item[i].getElementsByTagName('signguNm')[0].textContent;
     if(searched_city === city) {
@@ -54,17 +54,16 @@ function displayCity(searched_city) {
 
       let price = item[0].getElementsByTagName('price1')[0];
 
-      //let k = 0;
+      /// NODE.nextSibling 으로 가격 순회
       while(price.nodeName != 'chrgDeptNm') {
         const para2 = document.createElement('p');
         const span1 = document.createElement('span');
         const span2 = document.createElement('span');
 
-        let myPrice = (price.nodeName).replace('price', '') + 'ℓ : ';
-
-        span1.textContent = myPrice;
+        span1.textContent = (price.nodeName).replace('price', '') + 'ℓ : ';
         span2.textContent = price.textContent + '원';
 
+        // 0 원이 아닌 목록 하이라이트
         if(price.textContent != 0) {
           para2.style.backgroundColor = 'tomato';
         }
@@ -81,7 +80,6 @@ function displayCity(searched_city) {
   }
   h2.textContent = '옳바른 도시이름을 입력 해주세요.';
 }
-
 
 function init() {
   fetchResult();
