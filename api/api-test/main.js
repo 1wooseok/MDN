@@ -37,11 +37,11 @@ function searchCity() {
   let searched_city = search.value;
   search.value = '';
 
-  displayCity(searched_city);
+  display(searched_city);
 }
 
 // 종량제 봉투 정보 화면에 출력
-function displayCity(searched_city) {
+function display(searched_city) {
   console.log(myXML);
   
   let item = myXML.getElementsByTagName('item');
@@ -79,6 +79,7 @@ function displayCity(searched_city) {
     }
   }
   h2.textContent = '옳바른 도시이름을 입력 해주세요.';
+  para.textContent = '';
 }
 
 function init() {
