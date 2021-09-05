@@ -1,0 +1,50 @@
+:root {
+    /* COLOR */
+    --color-black: #3f454d;
+    --color-white: #ffffff;
+    --color-blue: #0d42ee;
+
+    /* BOX SIZE */
+    --padding-normal: 10px;
+
+    /* FONT SIZE*/
+    --font-large: 25px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 15px var(--padding-normal);
+}
+
+.name_space {
+    padding: 0 var(--padding-normal);
+}
+
+.new_task {
+    margin: 0 8px;
+}
+
+/* display: none */
+.hidden {
+    display: none;
+}
+
+/* NAV BAR */
+.nav_bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #027d04;
+    color: white;
+    align-items: center;
+}
+
+/* DATE */
+.date_section {
+    font-size: var(--font-large);
+    padding: 8px;
+}

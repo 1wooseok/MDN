@@ -1,0 +1,73 @@
+:root {
+    /* COLOR */
+    --color-black: #3f454d;
+    --color-white: #ffffff;
+    --color-blue: #0d42ee;
+
+    /* BOX SIZE */
+
+    /* FONT SIZE*/
+    
+}
+
+.input_section {
+    display: flex;
+    
+}
+/*  + button  */
+input[id="add_btn"] {
+    display: none;
+}
+
+input[id="add_btn"] + label {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+input[id="add_btn"] + label span {
+    display: block;
+    position: relative;
+    height: 2px;
+    background-color: var(--color-black);
+    border-radius: 10px;
+    transition: all 0.35s;
+}
+
+input[id="add_btn"] + label input[id="text_box"] {
+    position: relative;
+    top: -13px;
+    left: 20px;
+    transition: all 1s;
+    opacity: 0;
+
+}
+
+input[id="add_btn"] + label span:nth-child(1) {
+    transform: translateY(60%);
+}
+
+input[id="add_btn"] + label span:nth-child(2) {
+    transform:rotate(90deg);
+}
+
+/* Checked */
+input[id="add_btn"]:checked + label span:nth-child(1) {
+    transform: rotate(135deg);
+}
+
+input[id="add_btn"]:checked + label span:nth-child(2) {
+    transform: translateY(-90%) rotate(45deg);
+}
+
+input[id="add_btn"]:checked + label input[id="text_box"] {
+    position: relative;
+    top: -13px;
+    left: 20px;
+    opacity: 1;
+    display: inline-block;
+    transition: all 0.35s;
+    border: 2px solid var(--color-blue);
+    border-radius: 7px;
+}

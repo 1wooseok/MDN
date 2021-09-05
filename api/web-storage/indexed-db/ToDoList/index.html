@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practicing My TodoList</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="btn.css"> -->
+</head>
+<body>
+    <!-- 헤더바 -->
+    <header>
+        <div class="nav_bar">
+            <h1 class="title">ToDoList</h1>
+
+            <div class="name_box">
+                <input type="text" class="name_input">
+                <button class="name_btn">submit</button>
+            </div>
+
+            <div class="name_space">
+                <span class="name_span"></span>
+                <!-- <button class="edit_name_btn">edit</button> -->
+                <button class="del_name_btn">delete</button>    
+            </div>
+        </div>
+    </header>
+
+    <!-- 날짜 -->
+    <section>
+        <div class="date_section"></div>
+    </section>
+
+    <!-- 할일 현황 -->
+    <section>
+        <div class="completion">
+            <p>n개중 m개 완료됨.</p> 
+        </div>
+    </section>
+
+    <!-- 할일 목록 -->
+    <section>
+        <p class="something">오늘 할일</p>
+        <ul class="todo_ul"></ul>
+    </section>
+
+    <!-- 할일 추가 버튼 -->
+    <section>
+        <form> 
+            <input type="text" class="task_input">
+            <input type="submit" class="add_btn">
+            <!-- <button class="add_btn">Add</button> -->
+        </form>
+    </section>
+
+    <script src="date.js"></script>
+    <script src="user.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
