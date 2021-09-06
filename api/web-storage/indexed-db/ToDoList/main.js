@@ -7,7 +7,7 @@ let db;
 
 // indexedDB
 if(!window.indexedDB) {
-    alert('Browser not support IndexedDB');
+    alert('Browser doesnt support IndexedDB');
 } else {
     window.onload = function() {
         // open( DB_Name , DB_Version )
