@@ -9,10 +9,13 @@ const base_url = 'http://api.data.go.kr/openapi/tn_pubr_public_weighted_envlp_ap
 const api_key = 'V9hsM%2B3pd0KWaNCIJ82cLDqU1hJVBsaHI%2FnOwxsK1utzoE3d7HCHPYmKhD4zyUfoz2izB%2F9FiDJZFs6Hlt6b0g%3D%3D';
 let url;
 
+let no = 0;
+
 // 공공데이터 fetch
 function fetchResult(evt) {
-  url = `${base_url}?ServiceKey=${api_key}`;
-
+  let pageNo = `${encodeURIComponent('pageNo')}=${encodeURIComponent(no++)}`;
+  url = `${base_url}?ServiceKey=${api_key}&${pageNo}`;
+  console.log(url);
   fetch(url).then(function(result) {
         return result.text();
      }).then(function(xml) {
@@ -22,11 +25,6 @@ function fetchResult(evt) {
 
 // 공공데이터 Str -> XML(object)
 function strToXML(xml) {
-  const test1 = {
-    age: 11,
-    name: 'joy'
-  };
-
   let myString = xml;
   let myParser = new DOMParser();
   myXML = myParser.parseFromString(myString, "text/xml");
@@ -34,10 +32,9 @@ function strToXML(xml) {
 
 // 시군구 검색
 function searchCity() {
-  let searched_city = search.value;
-  search.value = '';
-
-  display(searched_city);
+    let searched_city = search.value;
+    
+    display(searched_city);
 }
 
 // 종량제 봉투 정보 화면에 출력
@@ -75,9 +72,18 @@ function display(searched_city) {
 
         price = price.nextSibling;
       }
+      no = 0;
       return
     }
   }
+
+  // page수 증가시켜서 다시 검색
+  if (no < 9) {
+    fetchResult();
+    searchCity();
+  }
+  
+  // 해당 시군구가 없을 경우
   h2.textContent = '옳바른 도시이름을 입력 해주세요.';
   para.textContent = '';
 }
