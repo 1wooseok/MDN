@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+    <script>
+        const imgUrl = 'https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/coffee.jpg';
+
+        function fetchImage() {
+          fetch(imgUrl)
+          .then(response => {
+            if(!response.ok) {
+              throw new Error(`HTTP error status: ${respose.status}`);
+            } else {
+              return response.blob();
+            }
+          })
+          .then(myBlob => {
+            let objURL = URL.createObjectURL(myBlob);
+            const img = document.createElement('img');
+            img.src = objURL;
+            document.body.appendChild(img);
+          })
+          .catch(err => {
+            console.log(`There has been an problem with your fetch operation: ${err.message}`);
+          })
+        }
+        
+        fetchImage();
+    </script>
+  </body>
+</html>
