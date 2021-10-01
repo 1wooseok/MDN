@@ -1,69 +1,17 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapquest example</title>
-    <style>
-        #map {
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
-    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
-    <button>I'm Here!</button>
-    <script>
-        // 1. The basic part of the example
-        const btn = document.querySelector('button');
-
-        var L;
-
-        window.onload = function () {
-            L.mapquest.key = 'RHlQlEyIG5rQKGXjwc4Jh1nCqKnmPppQ';
-
-            btn.onclick = function () {
-                if ('geolocation' in navigator) {
-                    console.log('o');
-                } else {
-                    console.log('x');
-                }
-
-                navigator.geolocation.getCurrentPosition((position) => {
-                    let lat = position.coords.latitude;
-                    let lng = position.coords.longitude;
-
-                    //'map' refers to a <div> element with the ID map
-                    var map = L.mapquest.map('map', {
-                        center: [lat, lng],
-                        layers: L.mapquest.tileLayer('hybrid'),
-                        zoom: 12
-                    });
-
-                    L.marker([lat, lng], {
-                        icon: L.mapquest.icons.marker({
-                            primaryColor: '#22407F',
-                            secondaryColor: '#3B5998',
-                            shadow: true,
-                            size: 'md',
-                            symbol: 'A'
-                        })
-                    })
-                        .bindPopup("I'm Here!")
-                        .addTo(map);
-                }, () => { console.log('Something Wrong..') })
-
-                btn.disabled = true;
-            }
-        }
-    </script>
+    <title>마커 클러스터러에 클릭이벤트 추가하기</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <h1>Simple Mapquest example</h1>
-
     <div id="map"></div>
+    <div id="search">
+        <input type="text" class="search_input">
+        <button class="search_btn">Search</button>
+    </div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98a0001a3486109fd99e7a58b946cfbe&libraries=clusterer,services"></script>
+<script src="cluster.js"></script>
 </body>
-
 </html>
