@@ -32,11 +32,25 @@ function searchPlaces() {
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
+    // 광주로 시작하는 주소를 담을 배열
+    let new_data = [];
 
+    if (status === kakao.maps.services.Status.OK) {
+        console.log(data);
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
-        displayPlaces(data);
+
+        // 주소지가 광주인 주소만 남겨두기.
+        for(let i=0; i<data.length; i++) {
+            // 주소의 앞글자를 가져옴  ex)'전남 무안군 청계면' => '전남'
+            let cityName = data[i].address_name.split(' ')[0];
+
+            if(cityName === '광주') {
+                new_data.push(data[i]);
+            }            
+        }
+
+        displayPlaces(new_data);
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
@@ -197,8 +211,12 @@ function displayPagination(pagination) {
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
+////////////////////////////////////////////////////
+/////////////// 여기서 시세 포함 ///////////////////////
+////////////////////////////////////////////////////
 function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    let price = ' n 만원 ';
+    var content = '<div style="padding:5px;z-index:1;">' + title + price + '</div>';
 
     infowindow.setContent(content);
     infowindow.open(map, marker);
@@ -212,11 +230,27 @@ function removeAllChildNods(el) {
 }
 
 
+// 검색바 GUI
 const form = document.querySelector('form');
 const menu_wrap = document.querySelector('#menu_wrap');
+const x_btn = document.querySelector('.x_btn');
 
-function hide() {
-    menu_wrap.classList.remove('hidden');
+function hide(e) {
+    let nodeName = e.target.nodeName
+    if (nodeName === 'DIV' || nodeName === 'SPAN') {    
+        menu_wrap.classList.remove('visible');
+        x_btn.classList.remove('visible');
+    }   
 }
-form.addEventListener('click', hide);
+
+function visible(e) {
+    let nodeName = e.target.nodeName
+    if(nodeName === 'INPUT') {
+        menu_wrap.classList.add('visible');
+        x_btn.classList.add('visible');
+    }
+}
+
+x_btn.addEventListener('click', hide);
+form.addEventListener('click', visible);
 
