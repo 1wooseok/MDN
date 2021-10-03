@@ -6,6 +6,15 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
 /* MAP WRAP */
 .map_wrap, .map_wrap * {
     margin:0;

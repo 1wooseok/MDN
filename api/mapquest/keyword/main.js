@@ -35,27 +35,25 @@ function placesSearchCB(data, status, pagination) {
     // 광주로 시작하는 주소를 담을 배열
     let new_data = [];
 
-    if (status === kakao.maps.services.Status.OK) {
-        console.log(data);
+    // 주소지가 광주인 주소만 남겨두기.
+    for(let i=0; i<data.length; i++) {
+        // 주소의 앞글자를 가져옴  ex)'전남 무안군 청계면' => '전남'
+        let cityName = data[i].address_name.split(' ')[0];
+
+        if(cityName === '광주') {
+            new_data.push(data[i]);
+        }            
+    }
+
+    if ((status === kakao.maps.services.Status.OK) && (new_data.length != 0)) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
-
-        // 주소지가 광주인 주소만 남겨두기.
-        for(let i=0; i<data.length; i++) {
-            // 주소의 앞글자를 가져옴  ex)'전남 무안군 청계면' => '전남'
-            let cityName = data[i].address_name.split(' ')[0];
-
-            if(cityName === '광주') {
-                new_data.push(data[i]);
-            }            
-        }
-
         displayPlaces(new_data);
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
-
-    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+        
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT || new_data.length === 0) {
 
         alert('검색 결과가 존재하지 않습니다.');
         return;
@@ -69,26 +67,27 @@ function placesSearchCB(data, status, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-
     var listEl = document.getElementById('placesList'), 
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
     bounds = new kakao.maps.LatLngBounds(), 
     listStr = '';
-    
+
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
     
+
     for ( var i=0; i<places.length; i++ ) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
             marker = addMarker(placePosition, i), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
+        
+        itemEl.addEventListener('click', () => {location.href = "apartment.html"});
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -114,10 +113,12 @@ function displayPlaces(places) {
             };
         })(marker, places[i].place_name);
 
+
         fragment.appendChild(itemEl);
     }
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+    
     listEl.appendChild(fragment);
     menuEl.scrollTop = 0;
 
