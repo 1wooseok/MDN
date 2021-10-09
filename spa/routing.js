@@ -47,7 +47,6 @@ ul.addEventListener('click', e => {
     // 주소창의 url은 변경되지만 HTTP 요청이 서버로 전송되지는 않는다.
     // history에 url을 추가함으로서 뒤로가기/앞으로가기 가능.
     history.pushState({ path }, null, path);
-    console.log(history);
 
     // path에 의한 AJAX 요청
     render(path);    
@@ -58,8 +57,9 @@ ul.addEventListener('click', e => {
 // 뒤로가기/앞으로가기 button 또는 history.back() / history.go(n) 감지
 // history.pushState / history.replaceState 메서드로는 event가 발생하지 않음.
 window.addEventListener('popstate', e => {
+    console.log(e.state);
     // 이전페이지 / 다음페이지 button이 클릭되면 render를 호출
-    render(e.state.path);
+    //render(e.state.path);
 })
 
 // PJAX 방식은 서버에 새로운 페이지 요청을 하지 않는다.
