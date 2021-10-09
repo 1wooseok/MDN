@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        nav {
+            height: 60px;
+            border-bottom: 1px solid black;
+        }
+
+        ul {
+            margin: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        ul li {
+            line-height: 60px;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        a {
+            padding: 5px;
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+
+    <nav>
+        <ul>
+            <li><a href="/one">one</a></li>
+            <li><a href="/two">two</a></li>
+            <li><a href="/three">three</a></li>
+        </ul>
+    </nav>
+
+    <div class="root"></div>
+    <script src="routing.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+#map {
+    width:100vw;
+    height:100vh;
+}
+
+#search {
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    width: 350px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px 0px;
+    background-color: white;
+
+}
+
+.search_input {
+    width: 280px;
+    border: none;
+    border-style: none;
+    outline-style: none;
+
+}
+
+.search_btn {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.search_btn:hover {
+    transform: scale(1.1);
+}

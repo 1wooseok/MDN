@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+
+    <script>
+        let url1 = 'https://raw.githubusercontent.com/mdn/learning-area/master/javascript/asynchronous/promises/coffee.jpg';
+        let url2 = 'https://github.com/mdn/learning-area/blob/master/javascript/asynchronous/promises/tea.jpg?raw=true';
+        let url3 = './description.txt';
+        
+        let a = fetchAndDecode(url1, 'blob');
+        let b = fetchAndDecode(url2, 'blob');
+        let c = fetchAndDecode(url3, 'text');
+
+        Promise.all([a,b,c]).then(arr => {
+            console.log(arr);
+
+            let myUrl1 = URL.createObjectURL(arr[0]);
+            let myUrl2 = URL.createObjectURL(arr[1]);
+            
+            let img1 = document.createElement('img');
+            let img2 = document.createElement('img');
+            let para = document.createElement('p');
+            img1.src = myUrl1;
+            img2.src = myUrl2;
+            para.textContent = arr[2];
+
+            document.body.appendChild(img1);
+            document.body.appendChild(img2);
+            document.body.appendChild(para);
+            
+        })
+
+        function fetchAndDecode(url, type) {
+            return fetch(url).then(response => {
+                if(!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                } else {
+                    if(type === 'blob') {
+                        return response.blob();
+                    } else if(type === 'text') {
+                        return response.text();
+                    }
+                }
+            })
+            .catch(err => {
+                console.log(`There has been a problem with your fetch operation for resource "${url}": ` + err.message);
+           })
+        }
+    </script>
+  </body>
+</html>
