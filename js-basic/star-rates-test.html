@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별점 테스트</title>
+</head>
+<body>
+    <style>
+        .star {
+            position: relative;
+            font-size: 30px;
+            color: #ddd;
+        }
+        
+        .star input {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .star span {
+            width: 0;
+            position: absolute; 
+            left: 0;
+            color: yellow;
+            overflow: hidden;
+            pointer-events: none;
+        }
+    </style>
+
+    <section>
+        <span class="star">
+            ★★★★★
+            <span>★★★★★</span>
+            <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+          </span>
+    </section>
+
+    <script>
+        const drawStar = (target) => {
+            document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+            // FORM 제출시 별점 수치로 반환.
+            console.log(target.value / 2);
+        }
+    </script>
+</body>
+</html>
