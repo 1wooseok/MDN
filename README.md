@@ -1,14 +1,11 @@
 # MDN tutorials
 
 ### Vanilla JS
- - event
- - Bubbling & Capture
- - event delegation
+ - Event
+ - Bubbling & Capturing , event delegation
  - DOM
- - XHR , Web Worker , Fetch API
- - OOP (+ Prototype) 
-   <br>
-   -> <a href="https://1wooseok.github.io/MDN/oop/bouncing-balls/index.html">Play Bouncing-Ball-Game</a>
+ - XHR ,Fetch API, Async/Await
+ - OOP (+ Prototype) <a href="https://1wooseok.github.io/MDN/oop/bouncing-balls/index.html">( Play Bouncing-Ball-Game )</a>
+ - Canvas & 2d ctx
  - JSON
- - canvas & 2d ctx
- - spa & routing
+ - Spa & routing
