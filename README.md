@@ -9,3 +9,6 @@
  - Canvas & 2d ctx
  - JSON
  - Spa & routing
+ - Third-party APIs
+ - ES module
+ - Web Storage ( Local, Session )
