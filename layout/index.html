@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Document</title></head>
+<body>
+  <!-- css sticky Footer -->
+  <style>
+    html {
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: inherit;
+    }
+
+    section {
+      height: 100%;
+    }
+
+    .wrapper {
+      min-height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      /* flex로 나눌 경우 */
+      /* display: flex;
+      flex-direction: column; */
+    }
+
+    main {
+      padding: 20px;
+      /* flex-flow: 1; */
+    }
+
+    header,
+    footer {
+      flex-shrink: 0;
+      background-color: rgb(75, 70, 74);
+      color: #fff;
+      padding: 20px;
+      /* flex-shrink: 0; */
+    }
+
+  </style>
+  <section>
+    <div class="wrapper">
+      <header>This is header</header>
+      <main>
+        <p>Main content</p>
+
+        <div class="num_value">Number</div>
+        <input type="number" id="num">
+
+      </main>
+      <footer>This is Footer</footer>
+    </div>
+  </section>
+  <script>
+    const input = document.querySelector("#num");
+    const span = document.querySelector(".num_value");
+    
+    input.addEventListener('change', () => {
+      // 1000의 자리 콤마
+      if(input.value > 999) {
+        let str = Array(input.value + '').reverse().join();
+        let copy = [];
+        for(let i=0; i<str.length; i++) {
+          if(i > 0 && i%3 == 0) {
+            copy.unshift(",")
+          }
+          copy.unshift(str[i]);
+        }
+        span.textContent = copy.join('');
+        return;
+      }
+      span.textContent = input.value;
+    })
+  </script>
+</body>
+</html>
