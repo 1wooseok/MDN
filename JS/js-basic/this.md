@@ -1,7 +1,6 @@
 # 'this' in JS
 
 
-
 JS에서 함수가 호출될 때, 매개변수로 전달되는 인자값 이외에, arguments 객체와 this를 암묵적으로 전달 받는다.
 
 ``` javascript
@@ -17,13 +16,13 @@ something(1);
 // Window {0: global, 1: global, 2: global, 3: global, 4: global, window: Window, self:   Window, document: document, name: '', location: Location, …}
 ```
 
-
+<br>
 
 JS의 this 는 다른 언어와는 조금 다르게 작동하는데, 
 
 <strong>함수의 호출 방식에 따라 this에 바인딩 되는 객체가 동적으로 결정된다.</strong>
 
-
+<br>
 
 ( 함수 호출 방식 )
 
@@ -33,7 +32,7 @@ JS의 this 는 다른 언어와는 조금 다르게 작동하는데,
 3. 생서자 함수 호출
 4. apply / call / bind 호출
 
-
+<br>
 
 ### 1.
 
@@ -49,7 +48,8 @@ function something() {
 window.something(); // 호출됨
 ```
 
-
+<br>
+<br>
 
 내부함수의 경우도
 
@@ -69,7 +69,8 @@ foo();
 
 (내부함수는 일반 함수, 메서드, call-back 함수 어디에서 선언되었든 this는 window에 바인딩 됨)
 
-
+<br>
+<br>
 
 메서드의 내부함수인 경우도
 
@@ -89,6 +90,8 @@ const obj = {
 obj.foo(); 
 ```
 
+<br>
+<br>
 
 
 콜백함수의 경우도
@@ -108,7 +111,8 @@ this === window
 ```
 
 
-
+<br>
+<br>
 
 
 ### 2.
@@ -138,7 +142,8 @@ obj2.sayName(); // Kim
 ```
 
 
-
+<br>
+<br>
 
 
 ### 3.
@@ -160,7 +165,8 @@ console.log(p); // {name: 'Lee'}
 ```
 
 
-
+<br>
+<br>
 
 
 ### + 화살표 함수의 this
