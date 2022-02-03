@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .breadcrumb > ul{
+            list-style: none;
+            display: flex;
+        }
+
+        .breadcrumb a,
+        .breadcrumb span {
+            padding: .5em 1em;
+        }
+
+        .breadcrumb li:not(:first-child)::before {
+           content: "→";
+        }
+        
+    </style>    
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Category</a></li>
+            <li><a href="">Sub-Category</a></li>
+            <li><span aria-current="page">Product</span></li>
+        </ul>
+    </nav>
+        
+</body>
+</html>

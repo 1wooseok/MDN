@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Document</title></head>
+<body>
+    <style>
+        .main-nav {
+            display: flex;
+        }
+
+        /* 두개의 분리된 flex-box대신, 자동 margin으로 분리시킴.
+        auto-margin은 사용가능한 모든 공간을 차지함. */
+        .push {
+            margin-left: auto;
+        }
+    </style>
+    <nav>
+        <ul class="main-nav">
+            <li><a href="">About</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Our Team</a></li>
+            <li class="push"><a href="">Contact</a></li>
+    </ul>
+    </nav>
+        
+</body>
+</html>
